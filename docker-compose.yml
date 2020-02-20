@@ -1,0 +1,103 @@
+version: "3.7"
+
+services:
+
+  mysql:
+    image: mysql:5.7.29
+    container_name: mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=moviesdb
+      - MYSQL_ROOT_PASSWORD=secret
+    healthcheck:
+      test: "mysqladmin ping -u root -p$${MYSQL_ROOT_PASSWORD}"
+      start_period: 30s
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.6.0
+    container_name: elasticsearch
+    restart: unless-stopped
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      cluster.name: docker-es-cluster
+      discovery.type: single-node
+      bootstrap.memory_lock: "true"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    healthcheck:
+      test: "curl -f http://localhost:9200 || exit 1"
+      start_period: 30s
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.6.0
+    container_name: logstash
+    restart: unless-stopped
+    ports:
+      - "5044:5044"
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline/
+    depends_on:
+      - elasticsearch
+    healthcheck:
+      test: "curl -f http://localhost:9600 || exit 1"
+      start_period: 30s
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:7.6.0
+    container_name: kibana
+    restart: unless-stopped
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    healthcheck:
+      test: "curl -f http://localhost:5601 || exit 1"
+      start_period: 30s
+
+  filebeat:
+    build: filebeat
+    container_name: filebeat
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/containers:/usr/share/dockerlogs/data:ro
+    depends_on:
+      - elasticsearch
+      - logstash
+
+  prometheus:
+    image: prom/prometheus:v2.16.0
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "9090" ]
+      start_period: 30s
+
+  grafana:
+    image: grafana/grafana:6.5.1
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    environment:
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+    healthcheck:
+      test: [ "CMD", "nc", "-z", "localhost", "3000" ]
+      start_period: 30s
