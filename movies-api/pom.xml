@@ -15,10 +15,10 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>1.8</java.version>
-        <logstash.version>6.3</logstash.version>
-        <orika.version>1.5.4</orika.version>
+        <logstash.version>6.4</logstash.version>
+        <mapstruct.version>1.3.1.Final</mapstruct.version>
         <springfox.version>2.9.2</springfox.version>
+        <docker.image.prefix>docker.mycompany.com</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -50,11 +50,17 @@
             <version>${logstash.version}</version>
         </dependency>
 
-        <!-- Orika -->
+        <!-- MapStruct -->
         <dependency>
-            <groupId>ma.glasnost.orika</groupId>
-            <artifactId>orika-core</artifactId>
-            <version>${orika.version}</version>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Swagger2 -->
@@ -97,6 +103,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <layers>
+                        <enabled>true</enabled>
+                    </layers>
+                    <image>
+                        <name>${docker.image.prefix}/${project.artifactId}:${project.version}</name>
+                    </image>
+                </configuration>
             </plugin>
         </plugins>
     </build>

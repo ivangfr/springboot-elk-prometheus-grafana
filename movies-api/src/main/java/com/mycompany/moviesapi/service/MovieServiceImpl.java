@@ -3,22 +3,21 @@ package com.mycompany.moviesapi.service;
 import com.mycompany.moviesapi.exception.MovieNotFoundException;
 import com.mycompany.moviesapi.model.Movie;
 import com.mycompany.moviesapi.repository.MovieRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class MovieServiceImpl implements MovieService {
 
     private final MovieRepository movieRepository;
 
-    public MovieServiceImpl(MovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
-    }
-
     @Override
     public Movie validateAndGetMovie(String imdb) throws MovieNotFoundException {
-        return movieRepository.findById(imdb).orElseThrow(() -> new MovieNotFoundException(String.format("Movie with imdb %s not found", imdb)));
+        return movieRepository.findById(imdb)
+                .orElseThrow(() -> new MovieNotFoundException(String.format("Movie with imdb %s not found", imdb)));
     }
 
     @Override

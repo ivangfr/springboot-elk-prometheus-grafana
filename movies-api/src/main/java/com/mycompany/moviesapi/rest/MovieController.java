@@ -1,11 +1,12 @@
 package com.mycompany.moviesapi.rest;
 
 import com.mycompany.moviesapi.exception.MovieNotFoundException;
+import com.mycompany.moviesapi.mapper.MovieMapper;
 import com.mycompany.moviesapi.model.Movie;
 import com.mycompany.moviesapi.rest.dto.CreateMovieDto;
 import com.mycompany.moviesapi.service.MovieService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import ma.glasnost.orika.MapperFacade;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,17 +23,13 @@ import java.util.List;
 import static net.logstash.logback.argument.StructuredArguments.v;
 
 @Slf4j
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/movies")
 public class MovieController {
 
     private final MovieService movieService;
-    private final MapperFacade mapperFacade;
-
-    public MovieController(MovieService movieService, MapperFacade mapperFacade) {
-        this.movieService = movieService;
-        this.mapperFacade = mapperFacade;
-    }
+    private final MovieMapper movieMapper;
 
     @GetMapping
     public List<Movie> getMovies() {
@@ -53,7 +50,7 @@ public class MovieController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public Movie createMovie(@Valid @RequestBody CreateMovieDto createMovieDto) {
-        Movie movie = mapperFacade.map(createMovieDto, Movie.class);
+        Movie movie = movieMapper.toMovie(createMovieDto);
         movie = movieService.createMovie(movie);
         log.info("Movie created", v("imdb", movie.getImdb()));
         return movie;
