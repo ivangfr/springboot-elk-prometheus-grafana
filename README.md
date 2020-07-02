@@ -8,13 +8,13 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
   `Spring Boot` Web Java application that exposes a REST API for managing jobs. Its endpoints are displayed in the picture below
 
-  ![movies-api](images/movies-api.png)
+  ![movies-api](images/movies-api-swagger.png)
 
 ## Prerequisites
 
-- `Java 11+`
-- `Docker`
-- `Docker-Compose`
+- [`Java 11+`](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- [`Docker`](https://www.docker.com/)
+- [`Docker-Compose`](https://docs.docker.com/compose/install/)
 
 ## Start Environment
 
