@@ -1,6 +1,5 @@
 package com.mycompany.moviesapi.rest;
 
-import com.mycompany.moviesapi.exception.MovieNotFoundException;
 import com.mycompany.moviesapi.mapper.MovieMapper;
 import com.mycompany.moviesapi.model.Movie;
 import com.mycompany.moviesapi.rest.dto.CreateMovieDto;
@@ -39,7 +38,7 @@ public class MovieController {
     }
 
     @GetMapping("/{imdb}")
-    public Movie getMovie(@PathVariable("imdb") String imdb) throws MovieNotFoundException {
+    public Movie getMovie(@PathVariable("imdb") String imdb) {
         if (imdb.equals("111")) {
             throw new NullPointerException("It is know there is a bug with this movie");
         }
@@ -57,7 +56,7 @@ public class MovieController {
     }
 
     @DeleteMapping("/{imdb}")
-    public String deleteMovie(@PathVariable("imdb") String imdb) throws MovieNotFoundException {
+    public String deleteMovie(@PathVariable("imdb") String imdb) {
         Movie movie = movieService.validateAndGetMovie(imdb);
         movieService.deleteMovie(movie);
         log.info("Movie deleted", v("imdb", movie.getImdb()));

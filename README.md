@@ -4,7 +4,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
 ## Application
 
-- **movies-api**
+- ### movies-api
 
   `Spring Boot` Web Java application that exposes a REST API for managing jobs. Its endpoints are displayed in the picture below
 
@@ -23,7 +23,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   docker-compose up -d
   ```
 
-- Wait a little bit until containers be `Up (healthy)` (except `filebeat`). In order to check it run
+- Wait a bit until containers be `Up (healthy)` (except `filebeat`). In order to check it run
   ```
   docker-compose ps
   ```

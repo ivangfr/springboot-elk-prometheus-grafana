@@ -1,13 +1,12 @@
 package com.mycompany.moviesapi.service;
 
-import com.mycompany.moviesapi.exception.MovieNotFoundException;
 import com.mycompany.moviesapi.model.Movie;
 
 import java.util.List;
 
 public interface MovieService {
 
-    Movie validateAndGetMovie(String imdb) throws MovieNotFoundException;
+    Movie validateAndGetMovie(String imdb);
 
     List<Movie> getMovies();
 
