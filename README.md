@@ -2,6 +2,8 @@
 
 The goal of this project is to implement a [`Spring Boot`](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) application, called `movies-api`, and use [`Filebeat`](https://www.elastic.co/beats/filebeat) & `ELK Stack` ([`Elasticsearch`](https://www.elastic.co/elasticsearch), [`Logstash`](https://www.elastic.co/logstash) and [`Kibana`](https://www.elastic.co/kibana)) to collect and visualize application's **logs** and [`Prometheus`](https://prometheus.io/) & [`Grafana`](https://grafana.com/) to monitor application's **metrics**.
 
+> **Note:** In [`kubernetes-environment`](https://github.com/ivangfr/kubernetes-environment/tree/master/user-event-sourcing-kafka) repository, it is shown how to deploy this project in `Kubernetes` (`Minikube`)
+
 ## Application
 
 - ### movies-api
@@ -87,15 +89,11 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   _Configuration_
 
   - Access `Kibana` website
-  - Click on `Explore on our own`
-  - On the icons present on the left, click on `Discover`
-  - Type `filebeat-*` in the `Index pattern` text-field and click on `> Next Step` button
-  - In the `Time Filter field name` combo-box, select `ts` and click on `Create index pattern` button
-  - Click again on the `Discover` icon (present on the left)
-  - In order to just see `movies-api` logs, add a filter that contains
-    - Field: `container-name`
-    - Operator: `is`
-    - Value: `movies-api`
+  - Click on `Explore on my own`
+  - In the main Kibana page, click on "burger" menu icon and then on `Discover`
+  - In the `Index pattern` field, set `filebeat-*` and click on `> Next Step` button
+  - In the `Time Filter field name` combo-box, select `@Timestamp` and click on `Create index pattern`
+  - Click on "burger" menu icon again and then on `Discover` to start performing searches
   
   ![kibana](images/kibana.png)
 
