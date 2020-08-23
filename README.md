@@ -66,7 +66,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
 - **movies-api**
   
-  `movies-api` Swagger Website is http://localhost:8080/swagger-ui.html
+  `movies-api` Swagger is http://localhost:8080/swagger-ui.html
 
 - **Prometheus**
 
