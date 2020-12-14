@@ -8,7 +8,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
 - ### movies-api
 
-  `Spring Boot` Web Java application that exposes a REST API for managing jobs. Its endpoints are displayed in the picture below
+  `Spring Boot` Web Java application that exposes a REST API for managing jobs. Its endpoints are displayed in the picture below.
 
   ![movies-api](images/movies-api-swagger.png)
 
@@ -91,8 +91,9 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   - Access `Kibana` website
   - Click on `Explore on my own`
   - In the main Kibana page, click on "burger" menu icon and then on `Discover`
+  - Click on `Create index pattern` button
   - In the `Index pattern` field, set `filebeat-*` and click on `> Next Step` button
-  - In the `Time Filter field name` combo-box, select `@Timestamp` and click on `Create index pattern`
+  - In the `Time field` combo-box, select `@Timestamp` and click on `Create index pattern`
   - Click on "burger" menu icon again and then on `Discover` to start performing searches
   
   ![kibana](images/kibana.png)
