@@ -2,7 +2,7 @@
 
 The goal of this project is to implement a [`Spring Boot`](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) application, called `movies-api`, and use [`Filebeat`](https://www.elastic.co/beats/filebeat) & `ELK Stack` ([`Elasticsearch`](https://www.elastic.co/elasticsearch), [`Logstash`](https://www.elastic.co/logstash) and [`Kibana`](https://www.elastic.co/kibana)) to collect and visualize application's **logs** and [`Prometheus`](https://prometheus.io/) & [`Grafana`](https://grafana.com/) to monitor application's **metrics**.
 
-> **Note:** In [`kubernetes-environment`](https://github.com/ivangfr/kubernetes-environment/tree/master/movies-api-elk-prometheus-grafana) repository, it is shown how to deploy this project in `Kubernetes` (`Minikube`)
+> **Note:** In [`kubernetes-minikube-environment`](https://github.com/ivangfr/kubernetes-minikube-environment/tree/master/user-event-sourcing-kafka) repository, it's shown how to deploy this project in `Kubernetes` (`Minikube`)
 
 ## Application
 
@@ -38,11 +38,11 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
 - Run the following command
   ```
-  ./mvnw clean spring-boot:run -DskipTests --projects movies-api
+  ./mvnw clean spring-boot:run --projects movies-api
   ```
-  > **Note:** If you want to change to "non-json-logs" (maybe during development it's useful), append to the comment above
+  > **Note:** If you want to change to "non-json-logs" (maybe during development it's useful), run
   > ```
-  > -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=non-json-logs"
+  > ./mvnw clean spring-boot:run --projects movies-api -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=non-json-logs"
   > ```
 
 ### Docker in JVM Mode
@@ -90,7 +90,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
   - Access `Kibana` website
   - Click on `Explore on my own`
-  - In the main Kibana page, click on "burger" menu icon and then on `Discover`
+  - In the main page, click on "burger" menu icon and then on `Discover`
   - Click on `Create index pattern` button
   - In the `Index pattern` field, set `filebeat-*` and click on `> Next Step` button
   - In the `Time field` combo-box, select `@Timestamp` and click on `Create index pattern`

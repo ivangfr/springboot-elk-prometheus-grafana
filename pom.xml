@@ -20,7 +20,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <jib.maven-plugin.version>2.7.0</jib.maven-plugin.version>
+        <jib.maven-plugin.version>2.8.0</jib.maven-plugin.version>
         <docker.image.prefix>docker.mycompany.com</docker.image.prefix>
     </properties>
 
@@ -30,10 +30,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>

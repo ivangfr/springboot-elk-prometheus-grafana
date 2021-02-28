@@ -16,8 +16,8 @@
 
     <properties>
         <logstash.version>6.4</logstash.version>
-        <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
-        <springdoc.openapi.version>1.5.1</springdoc.openapi.version>
+        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+        <springdoc.openapi.version>1.5.5</springdoc.openapi.version>
     </properties>
 
     <dependencies>
@@ -88,17 +88,27 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <annotationProcessorPaths>
-                        <!-- Lombok -->
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
                         </path>
-                        <!-- MapStruct -->
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
