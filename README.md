@@ -2,13 +2,13 @@
 
 The goal of this project is to implement a [`Spring Boot`](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) application, called `movies-api`, and use [`Filebeat`](https://www.elastic.co/beats/filebeat) & `ELK Stack` ([`Elasticsearch`](https://www.elastic.co/elasticsearch), [`Logstash`](https://www.elastic.co/logstash) and [`Kibana`](https://www.elastic.co/kibana)) to collect and visualize application's **logs** and [`Prometheus`](https://prometheus.io/) & [`Grafana`](https://grafana.com/) to monitor application's **metrics**.
 
-> **Note:** In [`kubernetes-minikube-environment`](https://github.com/ivangfr/kubernetes-minikube-environment/tree/master/user-event-sourcing-kafka) repository, it's shown how to deploy this project in `Kubernetes` (`Minikube`)
+> **Note:** In [`kubernetes-minikube-environment`](https://github.com/ivangfr/kubernetes-minikube-environment/tree/master/movies-api-elk-prometheus-grafana) repository, it's shown how to deploy this project in `Kubernetes` (`Minikube`)
 
 ## Application
 
 - ### movies-api
 
-  `Spring Boot` Web Java application that exposes a REST API for managing jobs. Its endpoints are displayed in the picture below.
+  `Spring Boot` Web Java application that exposes a REST API for managing movies. Its endpoints are displayed in the picture below.
 
   ![movies-api](images/movies-api-swagger.png)
 
@@ -30,9 +30,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   docker-compose ps
   ```
 
-## Running application
-
-### Development Mode
+## Running application with Maven
 
 - Open a terminal and make sure you are inside `springboot-elk-prometheus-grafana` folder
 
@@ -45,24 +43,39 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   > ./mvnw clean spring-boot:run --projects movies-api -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=non-json-logs"
   > ```
 
-### Docker in JVM Mode
+## Running application as Docker container
 
-- In a terminal, make sure you are inside `springboot-elk-prometheus-grafana` root folder
+- ### Build Docker image
 
-- Run the following command to build the image
-  ```
-  ./mvnw clean compile jib:dockerBuild --projects movies-api
-  ```
+  - In a terminal, make sure you are inside `springboot-elk-prometheus-grafana` root folder
+  - Run the following script to build the image
+    - JVM
+      ```
+      ./docker-build.sh
+      ```
+    - Native (it's not implemented yet)
+      ```
+      ./docker-build.sh native
+      ```
 
-- Finally, run the container
-  ```
-  docker run -d --rm --name movies-api \
-    -p 8080:8080 -e MYSQL_HOST=mysql \
-    --network=springboot-elk-prometheus-grafana_default \
-    docker.mycompany.com/movies-api:1.0.0
-  ```
+- ### Environment variables
 
-### Application & Services URLs
+  | Environment Variable | Description                                                       |
+  | -------------------- | ----------------------------------------------------------------- |
+  | `MYSQL_HOST`         | Specify host of the `MySQL` database to use (default `localhost`) |
+  | `MYSQL_PORT`         | Specify port of the `MySQL` database to use (default `3306`)      |
+
+- ### Start Docker containers
+
+  - Finally, run the container
+    ```
+    docker run -d --rm --name movies-api \
+      -p 8080:8080 -e MYSQL_HOST=mysql \
+      --network=springboot-elk-prometheus-grafana_default \
+      docker.mycompany.com/movies-api:1.0.0
+    ```
+
+## Application & Services URLs
 
 - **movies-api**
   
@@ -89,12 +102,12 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   _Configuration_
 
   - Access `Kibana` website
-  - Click on `Explore on my own`
-  - In the main page, click on "burger" menu icon and then on `Discover`
-  - Click on `Create index pattern` button
-  - In the `Index pattern` field, set `filebeat-*` and click on `> Next Step` button
-  - In the `Time field` combo-box, select `@Timestamp` and click on `Create index pattern`
-  - Click on "burger" menu icon again and then on `Discover` to start performing searches
+  - Click `Explore on my own`
+  - In the main page, click the _"burger"_ menu icon and, then click `Discover`
+  - Click `Create index pattern` button
+  - In the `Index pattern` field, set `filebeat-*` and click `> Next Step` button
+  - In the `Time field` combo-box, select `@Timestamp` and click `Create index pattern`
+  - Click the _"burger"_ menu icon again and, then click `Discover` to start performing searches
   
   ![kibana](images/kibana.png)
 
@@ -127,7 +140,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
     docker stop movies-api
     ```
 
-- To stop and remove `docker-compose` containers, networks and volumes, make sure you are in `springboot-elk-prometheus-grafana` root folder and run
+- To stop and remove `docker-compose` containers, network and volumes, make sure you are in `springboot-elk-prometheus-grafana` root folder and run
   ```
   docker-compose down -v
   ```

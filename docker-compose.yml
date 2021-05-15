@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   mysql:
-    image: mysql:8.0.22
+    image: mysql:8.0.25
     container_name: mysql
     restart: unless-stopped
     ports:
@@ -75,7 +75,7 @@ services:
       - logstash
 
   prometheus:
-    image: prom/prometheus:v2.23.0
+    image: prom/prometheus:v2.27.0
     container_name: prometheus
     restart: unless-stopped
     volumes:
@@ -87,7 +87,7 @@ services:
       start_period: 30s
 
   grafana:
-    image: grafana/grafana:7.3.5
+    image: grafana/grafana:7.5.6
     container_name: grafana
     restart: unless-stopped
     ports:
