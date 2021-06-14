@@ -1,9 +1,7 @@
-*.DS_store
-
 target/
-!../.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 ### STS ###
 .apt_generated
@@ -27,6 +25,11 @@ target/
 /nbdist/
 /.nb-gradle/
 build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
+
+### MAC OS ###
+*.DS_store

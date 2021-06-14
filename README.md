@@ -72,7 +72,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
     docker run -d --rm --name movies-api \
       -p 8080:8080 -e MYSQL_HOST=mysql \
       --network=springboot-elk-prometheus-grafana_default \
-      docker.mycompany.com/movies-api:1.0.0
+      ivanfranchin/movies-api:1.0.0
     ```
 
 ## Application & Services URLs
@@ -91,7 +91,10 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
   `Grafana` can be accessed at http://localhost:3000
 
-  In order to login, type `admin` for both `username` and `password`
+  - In order to login, type `admin` for both `username` and `password`
+  - You can skip the next screen that ask you to provide a new password
+  - Click `General / Home` on the top
+  - Click `movies-api-dashboard`
 
   ![grafana](images/grafana.png)
 
@@ -105,9 +108,9 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   - Click `Explore on my own`
   - In the main page, click the _"burger"_ menu icon and, then click `Discover`
   - Click `Create index pattern` button
-  - In the `Index pattern` field, set `filebeat-*` and click `> Next Step` button
+  - In the `Index pattern name` field, set `filebeat-*` and click `> Next Step` button
   - In the `Time field` combo-box, select `@Timestamp` and click `Create index pattern`
-  - Click the _"burger"_ menu icon again and, then click `Discover` to start performing searches
+  - Click the _"burger"_ menu icon again and then click `Discover` to start performing searches
   
   ![kibana](images/kibana.png)
 
