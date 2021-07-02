@@ -65,15 +65,15 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   | `MYSQL_HOST`         | Specify host of the `MySQL` database to use (default `localhost`) |
   | `MYSQL_PORT`         | Specify port of the `MySQL` database to use (default `3306`)      |
 
-- ### Start Docker containers
+- ### Start Docker container
 
-  - Finally, run the container
+  - In a terminal, run the following command to start the Docker container
     ```
-    docker run -d --rm --name movies-api \
-      -p 8080:8080 -e MYSQL_HOST=mysql \
+    docker run --rm --name movies-api -p 8080:8080 -e MYSQL_HOST=mysql \
       --network=springboot-elk-prometheus-grafana_default \
       ivanfranchin/movies-api:1.0.0
     ```
+    > **Note:** If you want to change to "non-json-logs", add `-e SPRING_PROFILES_ACTIVE=non-json-logs` to the command above
 
 ## Application & Services URLs
 
@@ -135,18 +135,23 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
 ## Shutdown
 
-- Stop application
-
-  - If the application was started with Maven, go to the terminals where it is running and press `Ctrl+C`
-  - If the application was started as a Docker container, run the command below
+- To stop application
+  - If it was started with Maven, go to the terminals where it is running and press `Ctrl+C`
+  - If it was started as a Docker container, go to a terminal and run the command below
     ```
     docker stop movies-api
     ```
-
-- To stop and remove `docker-compose` containers, network and volumes, make sure you are in `springboot-elk-prometheus-grafana` root folder and run
+- To stop and remove `docker-compose` containers, network and volumes, go to a terminal and, inside `springboot-elk-prometheus-grafana` root folder, run the following command
   ```
   docker-compose down -v
   ```
+
+## Cleanup
+
+To remove the Docker images created by this project, go to a terminal and, inside `springboot-elk-prometheus-grafana` root folder, run the script below
+```
+./remove-docker-images.sh
+```
 
 ## Reference
 
