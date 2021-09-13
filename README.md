@@ -25,7 +25,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   docker-compose up -d
   ```
 
-- Wait a bit until containers be `Up (healthy)` (except `filebeat`). In order to check it run
+- Wait for Docker containers to be with status `running (healthy)` (except `filebeat`). To check it, run
   ```
   docker-compose ps
   ```
@@ -153,7 +153,6 @@ To remove the Docker images created by this project, go to a terminal and, insid
 ./remove-docker-images.sh
 ```
 
-## Reference
+## References
 
-- http://development.wombatsecurity.com/development/2018/12/20/json-logging-for-spring-boot/
-- https://medium.com/@sece.cosmin/docker-logs-with-elastic-stack-elk-filebeat-50e2b20a27c6
+https://medium.com/@sece.cosmin/docker-logs-with-elastic-stack-elk-filebeat-50e2b20a27c6

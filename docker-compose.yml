@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   mysql:
-    image: mysql:8.0.25
+    image: mysql:8.0.26
     container_name: mysql
     restart: unless-stopped
     ports:
@@ -16,7 +16,7 @@ services:
       start_period: 30s
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
     container_name: elasticsearch
     restart: unless-stopped
     ports:
@@ -36,7 +36,7 @@ services:
       start_period: 30s
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.13.1
+    image: docker.elastic.co/logstash/logstash:7.14.1
     container_name: logstash
     restart: unless-stopped
     ports:
@@ -50,7 +50,7 @@ services:
       start_period: 30s
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.13.1
+    image: docker.elastic.co/kibana/kibana:7.14.1
     container_name: kibana
     restart: unless-stopped
     ports:
@@ -75,23 +75,23 @@ services:
       - logstash
 
   prometheus:
-    image: prom/prometheus:v2.27.1
+    image: prom/prometheus:v2.29.2
     container_name: prometheus
     restart: unless-stopped
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-      - 9090:9090
+      - "9090:9090"
     healthcheck:
       test: [ "CMD", "nc", "-z", "localhost", "9090" ]
       start_period: 30s
 
   grafana:
-    image: grafana/grafana:8.0.1
+    image: grafana/grafana:8.1.3
     container_name: grafana
     restart: unless-stopped
     ports:
-      - 3000:3000
+      - "3000:3000"
     environment:
       - GF_USERS_ALLOW_SIGN_UP=false
     volumes:

@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
 @Data
-public class CreateMovieDto {
+public class CreateMovieRequest {
 
     @Schema(example = "tt5580036")
     @NotBlank
@@ -30,5 +30,4 @@ public class CreateMovieDto {
     @Schema(example = "USA")
     @NotBlank
     private String country;
-
 }

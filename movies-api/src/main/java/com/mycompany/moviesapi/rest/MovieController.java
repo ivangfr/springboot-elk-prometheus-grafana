@@ -2,7 +2,7 @@ package com.mycompany.moviesapi.rest;
 
 import com.mycompany.moviesapi.mapper.MovieMapper;
 import com.mycompany.moviesapi.model.Movie;
-import com.mycompany.moviesapi.rest.dto.CreateMovieDto;
+import com.mycompany.moviesapi.rest.dto.CreateMovieRequest;
 import com.mycompany.moviesapi.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -48,8 +48,8 @@ public class MovieController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public Movie createMovie(@Valid @RequestBody CreateMovieDto createMovieDto) {
-        Movie movie = movieMapper.toMovie(createMovieDto);
+    public Movie createMovie(@Valid @RequestBody CreateMovieRequest createMovieRequest) {
+        Movie movie = movieMapper.toMovie(createMovieRequest);
         movie = movieService.createMovie(movie);
         log.info("Movie created", v("imdb", movie.getImdb()));
         return movie;
@@ -62,5 +62,4 @@ public class MovieController {
         log.info("Movie deleted", v("imdb", movie.getImdb()));
         return movie.getImdb();
     }
-
 }

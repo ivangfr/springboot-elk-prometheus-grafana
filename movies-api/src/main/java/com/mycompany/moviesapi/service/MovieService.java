@@ -13,5 +13,4 @@ public interface MovieService {
     Movie createMovie(Movie movie);
 
     void deleteMovie(Movie movie);
-
 }

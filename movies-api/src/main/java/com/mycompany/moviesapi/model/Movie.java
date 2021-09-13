@@ -24,5 +24,4 @@ public class Movie {
 
     @Column(nullable = false)
     private String country;
-
 }

@@ -9,5 +9,4 @@ public class MovieNotFoundException extends RuntimeException {
     public MovieNotFoundException(String imdb) {
         super(String.format("Movie with imdb %s not found", imdb));
     }
-
 }
