@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static net.logstash.logback.argument.StructuredArguments.v;
+import static net.logstash.logback.argument.StructuredArguments.kv;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -42,7 +42,7 @@ public class MovieController {
 
     @GetMapping("/{imdb}")
     public MovieResponse getMovie(@PathVariable("imdb") String imdb) {
-        log.info("Get movie", v("imdb", imdb));
+        log.info("Get movie {}", kv("imdb", imdb));
         if (imdb.equals("111")) {
             throw new NullPointerException("It is know there is a bug with this movie");
         }
@@ -53,7 +53,7 @@ public class MovieController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public MovieResponse createMovie(@Valid @RequestBody CreateMovieRequest createMovieRequest) {
-        log.info("Movie created", v("imdb", createMovieRequest.getImdb()));
+        log.info("Movie created {}", kv("imdb", createMovieRequest.getImdb()));
         Movie movie = movieMapper.toMovie(createMovieRequest);
         movie = movieService.createMovie(movie);
         return movieMapper.toMovieResponse(movie);
@@ -61,7 +61,7 @@ public class MovieController {
 
     @DeleteMapping("/{imdb}")
     public String deleteMovie(@PathVariable("imdb") String imdb) {
-        log.info("Movie deleted", v("imdb", imdb));
+        log.info("Movie deleted {}", kv("imdb", imdb));
         Movie movie = movieService.validateAndGetMovie(imdb);
         movieService.deleteMovie(movie);
         return movie.getImdb();

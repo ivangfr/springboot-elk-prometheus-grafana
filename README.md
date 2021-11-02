@@ -10,11 +10,11 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
   `Spring Boot` Web Java application that exposes a REST API for managing movies. Its endpoints are displayed in the picture below.
 
-  ![movies-api](images/movies-api-swagger.png)
+  ![movies-api](documentation/movies-api-swagger.png)
 
 ## Prerequisites
 
-- [`Java 11+`](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- [`Java 11+`](https://www.oracle.com/java/technologies/downloads/#java11)
 - [`Docker`](https://www.docker.com/)
 - [`Docker-Compose`](https://docs.docker.com/compose/install/)
 
@@ -25,7 +25,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   docker-compose up -d
   ```
 
-- Wait for Docker containers to be with status `running (healthy)` (except `filebeat`). To check it, run
+- Wait for Docker containers to be up and running. To check it, run
   ```
   docker-compose ps
   ```
@@ -85,7 +85,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
   `Prometheus` can be accessed at http://localhost:9090
 
-  ![prometheus](images/prometheus.png)
+  ![prometheus](documentation/prometheus.png)
 
 - **Grafana**
 
@@ -96,7 +96,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   - Click `General / Home` on the top
   - Click `movies-api-dashboard`
 
-  ![grafana](images/grafana.png)
+  ![grafana](documentation/grafana.png)
 
 - **Kibana**
 
@@ -109,10 +109,10 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   - In the main page, click the _"burger"_ menu icon and, then click `Discover`
   - Click `Create index pattern` button
   - In the `Index pattern name` field, set `filebeat-*` and click `> Next Step` button
-  - In the `Time field` combo-box, select `@Timestamp` and click `Create index pattern`
+  - In the `Time field` combo-box, select `@timestamp` and click `Create index pattern`
   - Click the _"burger"_ menu icon again and then click `Discover` to start performing searches
   
-  ![kibana](images/kibana.png)
+  ![kibana](documentation/kibana.png)
 
 - **Elasticsearch**
 
@@ -135,12 +135,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
 ## Shutdown
 
-- To stop application
-  - If it was started with Maven, go to the terminals where it is running and press `Ctrl+C`
-  - If it was started as a Docker container, go to a terminal and run the command below
-    ```
-    docker stop movies-api
-    ```
+- To stop application, go to the terminal where it is running and press `Ctrl+C`
 - To stop and remove `docker-compose` containers, network and volumes, go to a terminal and, inside `springboot-elk-prometheus-grafana` root folder, run the following command
   ```
   docker-compose down -v
