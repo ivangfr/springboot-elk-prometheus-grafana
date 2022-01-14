@@ -61,7 +61,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 - ### Environment variables
 
   | Environment Variable | Description                                                       |
-  | -------------------- | ----------------------------------------------------------------- |
+  |----------------------|-------------------------------------------------------------------|
   | `MYSQL_HOST`         | Specify host of the `MySQL` database to use (default `localhost`) |
   | `MYSQL_PORT`         | Specify port of the `MySQL` database to use (default `3306`)      |
 

@@ -22,14 +22,8 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      cluster.name: docker-es-cluster
       discovery.type: single-node
-      bootstrap.memory_lock: "true"
-      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
+      xpack.security.enabled: false
     healthcheck:
       test: "curl -f http://localhost:9200 || exit 1"
 
@@ -71,7 +65,7 @@ services:
       - logstash
 
   prometheus:
-    image: prom/prometheus:v2.31.1
+    image: prom/prometheus:v2.32.1
     container_name: prometheus
     restart: unless-stopped
     volumes:
@@ -82,7 +76,7 @@ services:
       test: [ "CMD", "nc", "-z", "localhost", "9090" ]
 
   grafana:
-    image: grafana/grafana:8.2.6
+    image: grafana/grafana:8.3.3
     container_name: grafana
     restart: unless-stopped
     ports:
