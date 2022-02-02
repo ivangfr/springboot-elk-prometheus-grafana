@@ -6,6 +6,17 @@
         <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
             <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
                 <providers>
+                    <pattern>
+                        <pattern>
+                            {
+                            "trace": "%X{traceId:-}",
+                            "span": "%X{spanId:-}",
+                            "parent": "%X{parentId:-}",
+                            "exportable": "%X{sampled:-}",
+                            "pid": "${PID:-}"
+                            }
+                        </pattern>
+                    </pattern>
                     <contextName>
                         <fieldName>app</fieldName>
                     </contextName>

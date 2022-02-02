@@ -102,6 +102,8 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
   `Kibana` can be accessed at http://localhost:5601
 
+  > IMPORTANT: in order to see movies-api logs in Kibana, you must run the application as Docker container
+
   _Configuration_
 
   - Access `Kibana` website
