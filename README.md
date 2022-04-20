@@ -81,6 +81,14 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   
   `movies-api` Swagger is http://localhost:8080/swagger-ui.html
 
+- **MySQL**
+
+  ```
+  docker exec -it -e MYSQL_PWD="secret" mysql mysql -uroot --database moviesdb
+  SELECT * FROM movies;
+  ```
+  > Type `exit` to get out of `MySQL monitor`
+
 - **Prometheus**
 
   `Prometheus` can be accessed at http://localhost:9090
@@ -96,13 +104,13 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   - Click `General / Home` on the top
   - Click `movies-api-dashboard`
 
-  ![grafana](documentation/grafana.png)
+  ![grafana](documentation/movies-api-grafana-dashboard.png)
 
 - **Kibana**
 
   `Kibana` can be accessed at http://localhost:5601
 
-  > IMPORTANT: in order to see movies-api logs in Kibana, you must run the application as Docker container
+  > **Important**: in order to see movies-api logs in Kibana, you must run the application as Docker container
 
   _Configuration_
 
