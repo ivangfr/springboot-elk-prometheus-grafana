@@ -84,7 +84,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 - **MySQL**
 
   ```
-  docker exec -it -e MYSQL_PWD="secret" mysql mysql -uroot --database moviesdb
+  docker exec -it -e MYSQL_PWD=secret mysql mysql -uroot --database moviesdb
   SELECT * FROM movies;
   ```
   > Type `exit` to get out of `MySQL monitor`
@@ -116,7 +116,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
   - Access `Kibana` website
   - Click `Explore on my own`
-  - On the main page, click the _"burger"_ menu icon and, then click `Discover`
+  - On the main page, click the _"burger"_ menu icon, then click `Discover`
   - Click `Create index pattern` button
   - In the `Name` field, set `filebeat-*`
   - In the `Timestamp field` combo-box, select `@timestamp`
@@ -131,10 +131,10 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
   _Useful queries_
   ```
-  # Check ES is up and running
+  # Check it's up and running
   curl localhost:9200
   
-  # Check indexes in ES
+  # Check indexes
   curl "localhost:9200/_cat/indices?v"
   
   # Check filebeat index mapping
