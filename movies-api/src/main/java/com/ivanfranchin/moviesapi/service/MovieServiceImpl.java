@@ -1,8 +1,8 @@
-package com.mycompany.moviesapi.service;
+package com.ivanfranchin.moviesapi.service;
 
-import com.mycompany.moviesapi.exception.MovieNotFoundException;
-import com.mycompany.moviesapi.model.Movie;
-import com.mycompany.moviesapi.repository.MovieRepository;
+import com.ivanfranchin.moviesapi.exception.MovieNotFoundException;
+import com.ivanfranchin.moviesapi.model.Movie;
+import com.ivanfranchin.moviesapi.repository.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

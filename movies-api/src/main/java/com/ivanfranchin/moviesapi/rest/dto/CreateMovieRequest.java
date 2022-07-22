@@ -1,6 +1,6 @@
-package com.mycompany.moviesapi.rest.dto;
+package com.ivanfranchin.moviesapi.rest.dto;
 
-import com.mycompany.moviesapi.model.Genre;
+import com.ivanfranchin.moviesapi.model.Genre;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

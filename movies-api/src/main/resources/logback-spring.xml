@@ -56,7 +56,7 @@
     <springProfile name="non-json-logs">
         <include resource="org/springframework/boot/logging/logback/base.xml"/>
     </springProfile>
-    <logger name="com.mycompany.moviesapi" level="DEBUG" additivity="false">
+    <logger name="com.ivanfranchin.moviesapi" level="DEBUG" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
     <root level="INFO">

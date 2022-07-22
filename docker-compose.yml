@@ -15,7 +15,7 @@ services:
       test: "mysqladmin ping -u root -p$${MYSQL_ROOT_PASSWORD}"
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.3
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.4
     container_name: elasticsearch
     restart: unless-stopped
     ports:
@@ -29,7 +29,7 @@ services:
       test: "curl -f http://localhost:9200 || exit 1"
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.17.3
+    image: docker.elastic.co/logstash/logstash:7.17.4
     container_name: logstash
     restart: unless-stopped
     ports:
@@ -42,7 +42,7 @@ services:
       test: "curl -f http://localhost:9600 || exit 1"
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.17.3
+    image: docker.elastic.co/kibana/kibana:7.17.4
     container_name: kibana
     restart: unless-stopped
     ports:
@@ -66,7 +66,7 @@ services:
       - logstash
 
   prometheus:
-    image: prom/prometheus:v2.35.0
+    image: prom/prometheus:v2.37.0
     container_name: prometheus
     restart: unless-stopped
     volumes:
@@ -77,7 +77,7 @@ services:
       test: [ "CMD", "nc", "-z", "localhost", "9090" ]
 
   grafana:
-    image: grafana/grafana:8.5.3
+    image: grafana/grafana:9.0.4
     container_name: grafana
     restart: unless-stopped
     ports:

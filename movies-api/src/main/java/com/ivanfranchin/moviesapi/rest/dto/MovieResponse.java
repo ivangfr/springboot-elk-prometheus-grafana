@@ -1,4 +1,4 @@
-package com.mycompany.moviesapi.rest.dto;
+package com.ivanfranchin.moviesapi.rest.dto;
 
 import lombok.Value;
 

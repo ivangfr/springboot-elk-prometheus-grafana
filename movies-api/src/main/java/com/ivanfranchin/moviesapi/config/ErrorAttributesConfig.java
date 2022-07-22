@@ -1,4 +1,4 @@
-package com.mycompany.moviesapi.config;
+package com.ivanfranchin.moviesapi.config;
 
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.error.ErrorAttributeOptions.Include;
@@ -14,7 +14,7 @@ import java.util.Map;
 public class ErrorAttributesConfig {
 
     @Bean
-    ErrorAttributes errorAttributes() {
+    public ErrorAttributes errorAttributes() {
         return new DefaultErrorAttributes() {
             @Override
             public Map<String, Object> getErrorAttributes(WebRequest webRequest, ErrorAttributeOptions options) {

@@ -25,7 +25,6 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1653229624247,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -79,7 +78,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "9.0.4",
       "targets": [
         {
           "datasource": {
@@ -157,7 +156,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.3",
+      "pluginVersion": "9.0.4",
       "targets": [
         {
           "expr": "process_cpu_usage{job=\"movies-api\"} * 100",

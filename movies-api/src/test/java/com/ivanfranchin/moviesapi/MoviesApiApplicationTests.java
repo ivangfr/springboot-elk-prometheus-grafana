@@ -1,4 +1,4 @@
-package com.mycompany.moviesapi;
+package com.ivanfranchin.moviesapi;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

@@ -1,10 +1,10 @@
-package com.mycompany.moviesapi.rest;
+package com.ivanfranchin.moviesapi.rest;
 
-import com.mycompany.moviesapi.mapper.MovieMapper;
-import com.mycompany.moviesapi.model.Movie;
-import com.mycompany.moviesapi.rest.dto.CreateMovieRequest;
-import com.mycompany.moviesapi.rest.dto.MovieResponse;
-import com.mycompany.moviesapi.service.MovieService;
+import com.ivanfranchin.moviesapi.model.Movie;
+import com.ivanfranchin.moviesapi.rest.dto.CreateMovieRequest;
+import com.ivanfranchin.moviesapi.mapper.MovieMapper;
+import com.ivanfranchin.moviesapi.rest.dto.MovieResponse;
+import com.ivanfranchin.moviesapi.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

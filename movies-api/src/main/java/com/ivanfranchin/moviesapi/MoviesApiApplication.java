@@ -1,4 +1,4 @@
-package com.mycompany.moviesapi;
+package com.ivanfranchin.moviesapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
