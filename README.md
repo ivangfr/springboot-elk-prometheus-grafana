@@ -14,7 +14,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
 ## Prerequisites
 
-- [`Java 11+`](https://www.oracle.com/java/technologies/downloads/#java11)
+- [`Java 17+`](https://www.oracle.com/java/technologies/downloads/#java17)
 - [`Docker`](https://www.docker.com/)
 - [`Docker-Compose`](https://docs.docker.com/compose/install/)
 
@@ -80,7 +80,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
 - **movies-api**
   
-  `movies-api` Swagger is http://localhost:8080/swagger-ui/index.html
+  `movies-api` Swagger is http://localhost:8080/swagger-ui.html
 
 - **MySQL**
 
