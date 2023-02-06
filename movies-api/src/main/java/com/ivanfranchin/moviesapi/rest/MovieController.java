@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static net.logstash.logback.argument.StructuredArguments.kv;
 
@@ -37,14 +36,14 @@ public class MovieController {
         log.debug("Get all movies");
         return movieService.getMovies().stream()
                 .map(movieMapper::toMovieResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @GetMapping("/{imdb}")
     public MovieResponse getMovie(@PathVariable("imdb") String imdb) {
         log.debug("Get movie {}", kv("imdb", imdb));
         if (imdb.equals("111")) {
-            throw new NullPointerException("It is know there is a bug with this movie");
+            throw new NullPointerException("It's known that there is a bug with this movie");
         }
         Movie movie = movieService.validateAndGetMovie(imdb);
         return movieMapper.toMovieResponse(movie);
