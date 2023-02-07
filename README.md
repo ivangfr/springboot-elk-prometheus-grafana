@@ -53,7 +53,7 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
       ```
       ./docker-build.sh
       ```
-    - Native (it's not implemented yet)
+    - Native
       ```
       ./docker-build.sh native
       ```
