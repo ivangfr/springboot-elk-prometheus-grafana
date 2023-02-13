@@ -119,9 +119,10 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
   - Click `Explore on my own`
   - On the main page, click the _"burger"_ menu icon, then click `Discover`
   - Click `Create index pattern` button
-  - In the `Name` field, set `filebeat-*`
-  - In the `Timestamp field` combo-box, select `@timestamp`
-  - Click `Create index pattern` button
+  - In the `Create index pattern` form
+    - Set `filebeat-*` fot the `Name` field
+    - Select `@timestamp` for the `Timestamp field` combo-box
+    - Click `Create index pattern` button
   - Click the _"burger"_ menu icon again and then click `Discover` to start performing searches
   
   ![kibana](documentation/kibana.jpeg)
