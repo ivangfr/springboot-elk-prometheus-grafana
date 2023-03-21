@@ -10,4 +10,3 @@ scrape_configs:
       - targets: ['host.docker.internal:8080']
         labels:
           application: movies-api
-

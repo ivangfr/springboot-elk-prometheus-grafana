@@ -4,6 +4,10 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
 > **Note**: In [`kubernetes-minikube-environment`](https://github.com/ivangfr/kubernetes-minikube-environment/tree/master/movies-api-elk-prometheus-grafana) repository, it's shown how to deploy this project in `Kubernetes` (`Minikube`)
 
+## Project Diagram
+
+![project-diagram](documentation/project-diagram.jpeg)
+
 ## Application
 
 - ### movies-api
