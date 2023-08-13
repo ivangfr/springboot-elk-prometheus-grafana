@@ -15,7 +15,7 @@
 
     <properties>
         <logstash-logback-encoder.version>7.2</logstash-logback-encoder.version>
-        <springdoc-openapi.version>2.0.4</springdoc-openapi.version>
+        <springdoc-openapi.version>2.1.0</springdoc-openapi.version>
     </properties>
 
     <dependencies>
