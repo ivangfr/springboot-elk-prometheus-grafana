@@ -8,6 +8,10 @@ The goal of this project is to implement a [`Spring Boot`](https://docs.spring.i
 
 On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-Concepts (PoCs) and articles. You can easily search for the technology you are interested in by using the filter. Who knows, perhaps I have already implemented a PoC or written an article about what you are looking for.
 
+## Additional Readings
+
+- \[**Medium**\] [**Exposing Metrics of a Spring Boot API that uses Spring Data JPA and PostgreSQL**](https://medium.com/javarevisited/exposing-metrics-of-a-spring-boot-api-that-uses-spring-data-jpa-and-postgresql-5ff188097b0f)
+- \[**Medium**\] [**Running Prometheus and Grafana to monitor a Spring Boot API application**](https://medium.com/@ivangfr/running-prometheus-and-grafana-to-monitor-a-spring-boot-api-application-e6a3313563f2)
 
 ## Project Diagram
 
