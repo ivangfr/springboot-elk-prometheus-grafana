@@ -1,4 +1,4 @@
-FROM docker.elastic.co/beats/filebeat:7.17.9
+FROM docker.elastic.co/beats/filebeat:7.17.16
 
 # Copy our custom configuration file
 COPY filebeat.yml /usr/share/filebeat/filebeat.yml
