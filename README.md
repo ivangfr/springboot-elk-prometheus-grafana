@@ -32,25 +32,25 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 ## Start Environment
 
-- Open a terminal and inside `springboot-elk-prometheus-grafana` root folder run
+- Open a terminal and inside `springboot-elk-prometheus-grafana` root folder run:
   ```
   docker compose up -d
   ```
 
-- Wait for Docker containers to be up and running. To check it, run
+- Wait for Docker containers to be up and running. To check it, run:
   ```
   docker compose ps
   ```
 
 ## Running application with Maven
 
-- Open a terminal and make sure you are inside `springboot-elk-prometheus-grafana` folder
+- Open a terminal and make sure you are inside `springboot-elk-prometheus-grafana` folder;
 
-- Run the following command
+- Run the following command:
   ```
   ./mvnw clean spring-boot:run --projects movies-api
   ```
-  > **Note**: If you want to change to "non-json-logs" (maybe during development it's useful), run
+  > **Note**: If you want to change to "non-json-logs" (maybe during development it's useful), run:
   > ```
   > ./mvnw clean spring-boot:run --projects movies-api -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=non-json-logs"
   > ```
@@ -59,8 +59,8 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - ### Build Docker image
 
-  - In a terminal, make sure you are inside `springboot-elk-prometheus-grafana` root folder
-  - Run the following script to build the image
+  - In a terminal, make sure you are inside `springboot-elk-prometheus-grafana` root folder;
+  - Run the following script to build the image:
     - JVM
       ```
       ./docker-build.sh
@@ -79,7 +79,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - ### Start Docker container
 
-  - In a terminal, run the following command to start the Docker container
+  - In a terminal, run the following command to start the Docker container:
     ```
     docker run --rm --name movies-api -p 8080:8080 \
       -e MYSQL_HOST=mysql \
@@ -112,10 +112,10 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   `Grafana` can be accessed at http://localhost:3000
 
-  - In order to login, type `admin` for both `username` and `password`
-  - You can skip the next screen that ask you to provide a new password
-  - Click `General / Home` on the top
-  - Click `movies-api-dashboard`
+  - In order to login, type `admin` for both `username` and `password`;
+  - You can skip the next screen that ask you to provide a new password;
+  - Click `General / Home` on the top;
+  - Click `movies-api-dashboard`.
 
   ![grafana](documentation/movies-api-grafana-dashboard.jpeg)
 
@@ -127,15 +127,15 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   _Configuration_
 
-  - Access `Kibana` website
-  - Click `Explore on my own`
-  - On the main page, click the _"burger"_ menu icon, then click `Discover`
-  - Click `Create index pattern` button
-  - In the `Create index pattern` form
-    - Set `filebeat-*` fot the `Name` field
-    - Select `@timestamp` for the `Timestamp field` combo-box
-    - Click `Create index pattern` button
-  - Click the _"burger"_ menu icon again and then click `Discover` to start performing searches
+  - Access `Kibana` website;
+  - Click `Explore on my own`;
+  - On the main page, click the _"burger"_ menu icon, then click `Discover`;
+  - Click `Create index pattern` button;
+  - In the `Create index pattern` form:
+    - Set `filebeat-*` fot the `Name` field;
+    - Select `@timestamp` for the `Timestamp field` combo-box;
+    - Click `Create index pattern` button;
+  - Click the _"burger"_ menu icon again and then click `Discover` to start performing searches.
   
   ![kibana](documentation/kibana.jpeg)
 
@@ -160,15 +160,15 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 ## Shutdown
 
-- To stop application, go to the terminal where it is running and press `Ctrl+C`
-- To stop and remove docker compose containers, network and volumes, go to a terminal and, inside `springboot-elk-prometheus-grafana` root folder, run the following command
+- To stop application, go to the terminal where it is running and press `Ctrl+C`;
+- To stop and remove docker compose containers, network and volumes, go to a terminal and, inside `springboot-elk-prometheus-grafana` root folder, run the following command:
   ```
   docker compose down -v
   ```
 
 ## Cleanup
 
-To remove the Docker images created by this project, go to a terminal and, inside `springboot-elk-prometheus-grafana` root folder, run the script below
+To remove the Docker images created by this project, go to a terminal and, inside `springboot-elk-prometheus-grafana` root folder, run the script below:
 ```
 ./remove-docker-images.sh
 ```
