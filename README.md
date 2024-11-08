@@ -10,7 +10,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 ## Additional Readings
 
-- \[**Medium**\] [**Exposing Metrics of a Spring Boot API that uses Spring Data JPA and PostgreSQL**](https://medium.com/javarevisited/exposing-metrics-of-a-spring-boot-api-that-uses-spring-data-jpa-and-postgresql-5ff188097b0f)
+- \[**Medium**\] [**Exposing Metrics of a Spring Boot API that uses Spring Data JPA and PostgreSQL**](https://medium.com/@ivangfr/exposing-metrics-of-a-spring-boot-api-that-uses-spring-data-jpa-and-postgresql-5ff188097b0f)
 - \[**Medium**\] [**Running Prometheus and Grafana to monitor a Spring Boot API application**](https://medium.com/@ivangfr/running-prometheus-and-grafana-to-monitor-a-spring-boot-api-application-e6a3313563f2)
 
 ## Project Diagram
@@ -27,7 +27,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 ## Prerequisites
 
-- [`Java 17+`](https://www.oracle.com/java/technologies/downloads/#java17)
+- [`Java 21+`](https://www.oracle.com/java/technologies/downloads/#java21)
 - [`Docker`](https://www.docker.com/)
 
 ## Start Environment

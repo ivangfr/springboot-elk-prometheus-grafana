@@ -14,7 +14,7 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
+        <logstash-logback-encoder.version>8.0</logstash-logback-encoder.version>
         <springdoc-openapi.version>2.6.0</springdoc-openapi.version>
     </properties>
 
