@@ -114,7 +114,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   - In order to login, type `admin` for both `username` and `password`;
   - You can skip the next screen that ask you to provide a new password;
-  - Click `General / Home` on the top;
+  - Select `Dashboards` on the left-menu;
   - Click `movies-api-dashboard`.
 
   ![grafana](documentation/movies-api-grafana-dashboard.jpeg)
