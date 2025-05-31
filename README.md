@@ -2,7 +2,7 @@
 
 The goal of this project is to implement a [`Spring Boot`](https://docs.spring.io/spring-boot/index.html) application, called `movies-api`, and use [`Filebeat`](https://www.elastic.co/beats/filebeat) & `ELK Stack` ([`Elasticsearch`](https://www.elastic.co/elasticsearch), [`Logstash`](https://www.elastic.co/logstash) and [`Kibana`](https://www.elastic.co/kibana)) to collect and visualize application's **logs** and [`Prometheus`](https://prometheus.io/) & [`Grafana`](https://grafana.com/) to monitor application's **metrics**.
 
-> **Note**: In [`kubernetes-minikube-environment`](https://github.com/ivangfr/kubernetes-minikube-environment/tree/master/movies-api-elk-prometheus-grafana) repository, it's shown how to deploy this project in `Kubernetes` (`Minikube`)
+> **Note**: In [`kubernetes-minikube-environment`](https://github.com/ivangfr/kubernetes-minikube-environment/tree/master/movies-api-elk-prometheus-grafana) repository, it shows how to deploy this project in `Kubernetes` (`Minikube`)
 
 ## Proof-of-Concepts & Articles
 
@@ -21,9 +21,13 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - ### movies-api
 
-  `Spring Boot` Web Java application that exposes a REST API for managing movies. Its endpoints are displayed in the picture below.
-
-  ![movies-api](documentation/movies-api-swagger.jpeg)
+  `Spring Boot` Web Java application that exposes a REST API for managing movies. It provides the following endpoints:
+  ```text
+    POST /api/movies -d {"imdb","title","year","genre","country"}
+     GET /api/movies
+     GET /api/movies/{imdb}
+  DELETE /api/movies/{imdb}
+  ```
 
 ## Prerequisites
 
@@ -37,7 +41,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
   docker compose up -d
   ```
 
-- Wait for Docker containers to be up and running. To check it, run:
+- Wait for the Docker containers to be up and running. To check it, run:
   ```bash
   docker ps -a
   ```
@@ -88,11 +92,34 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
     ```
     > **Note**: If you want to change to "non-json-logs", add `-e SPRING_PROFILES_ACTIVE=non-json-logs` to the command above
 
-## Application & Services URLs
+## Calling the Application Endpoints
 
-- **movies-api**
-  
-  `movies-api` Swagger is http://localhost:8080/swagger-ui.html
+- **Create movie**
+
+  ```bash
+  curl -X POST http://localhost:8080/api/movies \
+    -H "Content-Type: application/json" \
+    -d '{"imdb": "tt5580036", "title": "I, Tonya", "year": 2017, "genre": "Biography", "country": "USA"}'
+  ```
+
+- **Get all movies**
+
+  ```bash
+  curl http://localhost:8080/api/movies
+  ```
+- **Get movie**
+
+  ```bash
+  curl http://localhost:8080/api/movies/tt5580036
+  ```
+
+- **Delete movie**
+
+  ```bash
+  curl -X DELETE http://localhost:8080/api/movies/tt5580036
+  ```
+
+## Services URLs
 
 - **MySQL**
 
