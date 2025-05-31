@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 public record CreateMovieRequest(
-        @NotBlank String imdb,
+        @NotBlank String imdbId,
         @NotBlank String title,
         @Positive Short year,
         @NotNull Genre genre,

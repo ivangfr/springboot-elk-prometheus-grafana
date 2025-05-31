@@ -370,7 +370,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(increase(http_server_requests_seconds_count{job=\"movies-api\",method=\"GET\",status=\"200\",uri=\"/api/movies/{imdb}\"}[1m]))",
+          "expr": "sum(increase(http_server_requests_seconds_count{job=\"movies-api\",method=\"GET\",status=\"200\",uri=\"/api/movies/{imdbId}\"}[1m]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -383,13 +383,13 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(increase(http_server_requests_seconds_count{job=\"movies-api\",method=\"GET\",status!=\"200\",uri=\"/api/movies/{imdb}\"}[1m]))",
+          "expr": "sum(increase(http_server_requests_seconds_count{job=\"movies-api\",method=\"GET\",status!=\"200\",uri=\"/api/movies/{imdbId}\"}[1m]))",
           "interval": "",
           "legendFormat": "ERROR",
           "refId": "B"
         }
       ],
-      "title": "GET /api/movies/{imdb}",
+      "title": "GET /api/movies/{imdbId}",
       "transparent": true,
       "type": "timeseries"
     },
@@ -591,7 +591,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(increase(http_server_requests_seconds_count{job=\"movies-api\",method=\"DELETE\",status=\"200\",uri=\"/api/movies/{imdb}\"}[1m]))",
+          "expr": "sum(increase(http_server_requests_seconds_count{job=\"movies-api\",method=\"DELETE\",status=\"200\",uri=\"/api/movies/{imdbId}\"}[1m]))",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -604,13 +604,13 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(increase(http_server_requests_seconds_count{job=\"movies-api\",method=\"DELETE\",status!=\"200\",uri=\"/api/movies/{imdb}\"}[1m]))",
+          "expr": "sum(increase(http_server_requests_seconds_count{job=\"movies-api\",method=\"DELETE\",status!=\"200\",uri=\"/api/movies/{imdbId}\"}[1m]))",
           "interval": "",
           "legendFormat": "ERROR",
           "refId": "B"
         }
       ],
-      "title": "DELETE /api/movies/{imdb}",
+      "title": "DELETE /api/movies/{imdbId}",
       "transparent": true,
       "type": "timeseries"
     }

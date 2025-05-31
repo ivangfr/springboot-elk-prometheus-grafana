@@ -36,30 +36,30 @@ public class MovieController {
                 .toList();
     }
 
-    @GetMapping("/{imdb}")
-    public MovieResponse getMovie(@PathVariable("imdb") String imdb) {
-        log.debug("Get movie {}", kv("imdb", imdb));
-        if (imdb.equals("111")) {
+    @GetMapping("/{imdbId}")
+    public MovieResponse getMovie(@PathVariable("imdbId") String imdbId) {
+        log.debug("Get movie {}", kv("imdbId", imdbId));
+        if (imdbId.equals("111")) {
             throw new NullPointerException("It's known that there is a bug with this movie");
         }
-        Movie movie = movieService.validateAndGetMovie(imdb);
+        Movie movie = movieService.validateAndGetMovie(imdbId);
         return MovieResponse.from(movie);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public MovieResponse createMovie(@Valid @RequestBody CreateMovieRequest createMovieRequest) {
-        log.debug("Movie created {}", kv("imdb", createMovieRequest.imdb()));
+        log.debug("Movie created {}", kv("imdbId", createMovieRequest.imdbId()));
         Movie movie = Movie.from(createMovieRequest);
         movie = movieService.createMovie(movie);
         return MovieResponse.from(movie);
     }
 
-    @DeleteMapping("/{imdb}")
-    public String deleteMovie(@PathVariable("imdb") String imdb) {
-        log.debug("Movie deleted {}", kv("imdb", imdb));
-        Movie movie = movieService.validateAndGetMovie(imdb);
+    @DeleteMapping("/{imdbId}")
+    public String deleteMovie(@PathVariable("imdbId") String imdbId) {
+        log.debug("Movie deleted {}", kv("imdbId", imdbId));
+        Movie movie = movieService.validateAndGetMovie(imdbId);
         movieService.deleteMovie(movie);
-        return movie.getImdb();
+        return movie.getImdbId();
     }
 }

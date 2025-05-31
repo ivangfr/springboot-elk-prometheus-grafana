@@ -23,10 +23,10 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
   `Spring Boot` Web Java application that exposes a REST API for managing movies. It provides the following endpoints:
   ```text
-    POST /api/movies -d {"imdb","title","year","genre","country"}
+    POST /api/movies -d {"imdbId","title","year","genre","country"}
      GET /api/movies
-     GET /api/movies/{imdb}
-  DELETE /api/movies/{imdb}
+     GET /api/movies/{imdbId}
+  DELETE /api/movies/{imdbId}
   ```
 
 ## Prerequisites
@@ -99,7 +99,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
   ```bash
   curl -X POST http://localhost:8080/api/movies \
     -H "Content-Type: application/json" \
-    -d '{"imdb": "tt5580036", "title": "I, Tonya", "year": 2017, "genre": "Biography", "country": "USA"}'
+    -d '{"imdbId": "tt5580036", "title": "I, Tonya", "year": 2017, "genre": "Biography", "country": "USA"}'
   ```
 
 - **Get all movies**

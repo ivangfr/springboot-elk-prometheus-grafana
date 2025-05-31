@@ -13,7 +13,7 @@ import lombok.Data;
 public class Movie {
 
     @Id
-    private String imdb;
+    private String imdbId;
 
     @Column(nullable = false)
     private String title;
@@ -29,7 +29,7 @@ public class Movie {
 
     public static Movie from(CreateMovieRequest createMovieRequest) {
         Movie movie = new Movie();
-        movie.setImdb(createMovieRequest.imdb());
+        movie.setImdbId(createMovieRequest.imdbId());
         movie.setTitle(createMovieRequest.title());
         movie.setYear(createMovieRequest.year());
         movie.setGenre(createMovieRequest.genre());

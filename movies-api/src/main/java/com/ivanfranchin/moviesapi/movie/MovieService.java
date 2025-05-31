@@ -13,8 +13,8 @@ public class MovieService {
 
     private final MovieRepository movieRepository;
 
-    public Movie validateAndGetMovie(String imdb) {
-        return movieRepository.findById(imdb).orElseThrow(() -> new MovieNotFoundException(imdb));
+    public Movie validateAndGetMovie(String imdbId) {
+        return movieRepository.findById(imdbId).orElseThrow(() -> new MovieNotFoundException(imdbId));
     }
 
     public List<Movie> getMovies() {
