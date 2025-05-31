@@ -1,90 +1,90 @@
 services:
 
   mysql:
-    image: mysql:9.0.1
-    container_name: mysql
-    restart: unless-stopped
+    image: 'mysql:9.2.0'
+    container_name: 'mysql'
+    restart: 'unless-stopped'
     ports:
-      - "3306:3306"
+      - '3306:3306'
     environment:
-      - MYSQL_DATABASE=moviesdb
-      - MYSQL_ROOT_PASSWORD=secret
+      - 'MYSQL_DATABASE=moviesdb'
+      - 'MYSQL_ROOT_PASSWORD=secret'
     healthcheck:
       test: "mysqladmin ping -u root -p$${MYSQL_ROOT_PASSWORD}"
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.25
-    container_name: elasticsearch
-    restart: unless-stopped
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:7.17.28'
+    container_name: 'elasticsearch'
+    restart: 'unless-stopped'
     ports:
-      - "9200:9200"
-      - "9300:9300"
+      - '9200:9200'
+      - '9300:9300'
     environment:
-      discovery.type: single-node
-      xpack.security.enabled: false
-      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+      - 'discovery.type=single-node'
+      - 'xpack.security.enabled=false'
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
     healthcheck:
-      test: "curl -f http://localhost:9200 || exit 1"
+      test: 'curl -f http://localhost:9200 || exit 1'
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.17.25
-    container_name: logstash
-    restart: unless-stopped
+    image: 'docker.elastic.co/logstash/logstash:7.17.28'
+    container_name: 'logstash'
+    restart: 'unless-stopped'
     ports:
-      - "5044:5044"
+      - '5044:5044'
     volumes:
-      - ./logstash/pipeline:/usr/share/logstash/pipeline/
+      - './logstash/pipeline:/usr/share/logstash/pipeline/'
     depends_on:
-      - elasticsearch
+      - 'elasticsearch'
     healthcheck:
-      test: "curl -f http://localhost:9600 || exit 1"
+      test: 'curl -f http://localhost:9600 || exit 1'
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.17.25
-    container_name: kibana
-    restart: unless-stopped
+    image: 'docker.elastic.co/kibana/kibana:7.17.28'
+    container_name: 'kibana'
+    restart: 'unless-stopped'
     ports:
-      - "5601:5601"
+      - '5601:5601'
     environment:
-      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+      - 'ELASTICSEARCH_HOSTS=http://elasticsearch:9200'
     depends_on:
-      - elasticsearch
+      - 'elasticsearch'
     healthcheck:
-      test: "curl -f http://localhost:5601 || exit 1"
+      test: 'curl -f http://localhost:5601 || exit 1'
 
   filebeat:
-    build: filebeat
-    container_name: filebeat
-    restart: unless-stopped
+    build: 'filebeat'
+    container_name: 'filebeat'
+    restart: 'unless-stopped'
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /var/lib/docker/containers:/usr/share/dockerlogs/data:ro
+      - '/run/podman/podman.sock:/var/run/docker.sock'
+      - '/var/lib/containers:/usr/share/dockerlogs/data:ro'
     depends_on:
-      - elasticsearch
-      - logstash
+      - 'elasticsearch'
+      - 'logstash'
 
   prometheus:
-    image: prom/prometheus:v2.55.1
-    container_name: prometheus
-    restart: unless-stopped
+    image: 'prom/prometheus:v3.4.0'
+    container_name: 'prometheus'
+    restart: 'unless-stopped'
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - './prometheus/prometheus.yml:/etc/prometheus/prometheus.yml'
     ports:
-      - "9090:9090"
+      - '9090:9090'
     healthcheck:
       test: [ "CMD", "nc", "-z", "localhost", "9090" ]
 
   grafana:
-    image: grafana/grafana:11.3.0
-    container_name: grafana
-    restart: unless-stopped
+    image: 'grafana/grafana:12.0.1'
+    container_name: 'grafana'
+    restart: 'unless-stopped'
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
-      - GF_USERS_ALLOW_SIGN_UP=false
+      - 'GF_USERS_ALLOW_SIGN_UP=false'
     volumes:
-      - ./grafana/provisioning:/etc/grafana/provisioning
+      - './grafana/provisioning:/etc/grafana/provisioning'
     depends_on:
-      - prometheus
+      - 'prometheus'
     healthcheck:
       test: [ "CMD", "nc", "-z", "localhost", "3000" ]
