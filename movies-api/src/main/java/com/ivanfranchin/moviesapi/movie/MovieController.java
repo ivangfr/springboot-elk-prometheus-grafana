@@ -1,9 +1,8 @@
-package com.ivanfranchin.moviesapi.rest;
+package com.ivanfranchin.moviesapi.movie;
 
-import com.ivanfranchin.moviesapi.model.Movie;
-import com.ivanfranchin.moviesapi.rest.dto.CreateMovieRequest;
-import com.ivanfranchin.moviesapi.rest.dto.MovieResponse;
-import com.ivanfranchin.moviesapi.service.MovieService;
+import com.ivanfranchin.moviesapi.movie.model.Movie;
+import com.ivanfranchin.moviesapi.movie.dto.CreateMovieRequest;
+import com.ivanfranchin.moviesapi.movie.dto.MovieResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

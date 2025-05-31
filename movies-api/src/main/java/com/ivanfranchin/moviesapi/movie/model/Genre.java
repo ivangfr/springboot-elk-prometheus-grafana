@@ -1,4 +1,4 @@
-package com.ivanfranchin.moviesapi.model;
+package com.ivanfranchin.moviesapi.movie.model;
 
 public enum Genre {
 

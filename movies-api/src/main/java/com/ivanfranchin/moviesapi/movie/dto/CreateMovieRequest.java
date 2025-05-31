@@ -1,6 +1,6 @@
-package com.ivanfranchin.moviesapi.rest.dto;
+package com.ivanfranchin.moviesapi.movie.dto;
 
-import com.ivanfranchin.moviesapi.model.Genre;
+import com.ivanfranchin.moviesapi.movie.model.Genre;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

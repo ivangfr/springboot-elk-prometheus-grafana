@@ -1,6 +1,6 @@
-package com.ivanfranchin.moviesapi.rest.dto;
+package com.ivanfranchin.moviesapi.movie.dto;
 
-import com.ivanfranchin.moviesapi.model.Movie;
+import com.ivanfranchin.moviesapi.movie.model.Movie;
 
 public record MovieResponse(String imdb, String title, Short year, String genre, String country) {
 
