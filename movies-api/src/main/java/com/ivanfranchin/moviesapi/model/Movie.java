@@ -1,5 +1,6 @@
 package com.ivanfranchin.moviesapi.model;
 
+import com.ivanfranchin.moviesapi.rest.dto.CreateMovieRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -25,4 +26,14 @@ public class Movie {
 
     @Column(nullable = false)
     private String country;
+
+    public static Movie from(CreateMovieRequest createMovieRequest) {
+        Movie movie = new Movie();
+        movie.setImdb(createMovieRequest.imdb());
+        movie.setTitle(createMovieRequest.title());
+        movie.setYear(createMovieRequest.year());
+        movie.setGenre(createMovieRequest.genre());
+        movie.setCountry(createMovieRequest.country());
+        return movie;
+    }
 }

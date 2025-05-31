@@ -1,6 +1,5 @@
 package com.ivanfranchin.moviesapi.rest;
 
-import com.ivanfranchin.moviesapi.mapper.MovieMapper;
 import com.ivanfranchin.moviesapi.model.Movie;
 import com.ivanfranchin.moviesapi.rest.dto.CreateMovieRequest;
 import com.ivanfranchin.moviesapi.rest.dto.MovieResponse;
@@ -29,13 +28,12 @@ import static net.logstash.logback.argument.StructuredArguments.kv;
 public class MovieController {
 
     private final MovieService movieService;
-    private final MovieMapper movieMapper;
 
     @GetMapping
     public List<MovieResponse> getMovies() {
         log.debug("Get all movies");
         return movieService.getMovies().stream()
-                .map(movieMapper::toMovieResponse)
+                .map(MovieResponse::from)
                 .toList();
     }
 
@@ -46,16 +44,16 @@ public class MovieController {
             throw new NullPointerException("It's known that there is a bug with this movie");
         }
         Movie movie = movieService.validateAndGetMovie(imdb);
-        return movieMapper.toMovieResponse(movie);
+        return MovieResponse.from(movie);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public MovieResponse createMovie(@Valid @RequestBody CreateMovieRequest createMovieRequest) {
-        log.debug("Movie created {}", kv("imdb", createMovieRequest.getImdb()));
-        Movie movie = movieMapper.toMovie(createMovieRequest);
+        log.debug("Movie created {}", kv("imdb", createMovieRequest.imdb()));
+        Movie movie = Movie.from(createMovieRequest);
         movie = movieService.createMovie(movie);
-        return movieMapper.toMovieResponse(movie);
+        return MovieResponse.from(movie);
     }
 
     @DeleteMapping("/{imdb}")

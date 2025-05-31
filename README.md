@@ -33,12 +33,12 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 ## Start Environment
 
 - Open a terminal and inside the `springboot-elk-prometheus-grafana` root folder run:
-  ```
+  ```bash
   docker compose up -d
   ```
 
 - Wait for Docker containers to be up and running. To check it, run:
-  ```
+  ```bash
   docker ps -a
   ```
 
@@ -47,11 +47,11 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 - Open a terminal and make sure you are inside the `springboot-elk-prometheus-grafana` folder;
 
 - Run the following command:
-  ```
+  ```bash
   ./mvnw clean spring-boot:run --projects movies-api
   ```
   > **Note**: If you want to switch to the "non-json-logs" profile (which may be useful during development), run:
-  > ```
+  > ```bash
   > ./mvnw clean spring-boot:run --projects movies-api -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=non-json-logs"
   > ```
 
@@ -62,11 +62,11 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
   - In a terminal, make sure you are inside the `springboot-elk-prometheus-grafana` root folder;
   - Run the following script to build the image:
     - JVM
-      ```
+      ```bash
       ./build-docker-images.sh
       ```
     - Native
-      ```
+      ```bash
       ./build-docker-images.sh native
       ```
 
@@ -80,7 +80,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 - ### Start Docker container
 
   - In a terminal, run the following command to start the Docker container:
-    ```
+    ```bash
     docker run --rm --name movies-api -p 8080:8080 \
       -e MYSQL_HOST=mysql \
       --network=springboot-elk-prometheus-grafana_default \
@@ -96,7 +96,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - **MySQL**
 
-  ```
+  ```bash
   docker exec -it -e MYSQL_PWD=secret mysql mysql -uroot --database moviesdb
   SELECT * FROM movies;
   ```
@@ -144,7 +144,7 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
   `Elasticsearch` URL is http://localhost:9200
 
   _Useful queries_
-  ```
+  ```text
   # Check it's up and running
   curl localhost:9200
   
@@ -162,14 +162,14 @@ On [ivangfr.github.io](https://ivangfr.github.io), I have compiled my Proof-of-C
 
 - To stop the application, go to the terminal where it is running and press `Ctrl+C`.
 - To stop and remove docker compose containers, network, and volumes, go to a terminal and, inside the `springboot-elk-prometheus-grafana` root folder, run the following command:
-  ```
+  ```bash
   docker compose down -v
   ```
 
 ## Cleanup
 
 To remove the Docker images created by this project, go to a terminal and, inside the `springboot-elk-prometheus-grafana` root folder, run the script below:
-```
+```bash
 ./remove-docker-images.sh
 ```
 
